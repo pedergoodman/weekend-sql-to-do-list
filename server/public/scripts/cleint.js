@@ -21,22 +21,67 @@ $(document).ready(() => {
 function renderTaskList(taskList) {
   console.log('in renderer! task list is:', taskList);
   // renderOpenTasks(taskList)
+  // renderClosedTasks(taskList)
     console.log('in render open tasks');
-
-  // function renderOpenTasks(taskList) {
     for (const task of taskList) {
-    //  if(task.completed-status == true) {
-  
-       console.log('task id is:', task.id);
-       console.log('task text is:', task.text);
-       console.log('task complete status is:', task.completed_status);
-       console.log('task completed date is:', task.completed_date);
-       console.log('task due-date is:', task.due_date);
-    //  } 
+      let taskId = task.id;
+      let taskText = task.text;
+      let taskStatus = task.completed_status;
+      let taskCompletedDate = task.completed_date
+      let taskDueDate = task.due_date
+
+      let dateToAdd = '';
+      let setClass = '';
+
+      if (taskStatus) {
+        dateToAdd = `✅ ${taskCompletedDate}`
+        setClass = 'closed'
+      } else {
+        dateToAdd = `Due: ${taskDueDate}`
+        setClass = 'open'
+      }
+
+
+
+      let taskRow = $(`
+        <tr class="task-row" data-id="${taskId}">
+          <td class="task-checkbox-btn ${setClass}"><button><img src="images/checkbox-5-64.png" alt="checkbox-5"></button></td>
+          <td class="task-text">${taskText}</td>
+          <td class="task-date">${dateToAdd}</td>
+          <td class="task-delete-btn"><button><img src="images/delete-133-64.png" alt="checkbox-5"></button></td>
+        </tr>
+        `);
+
+        console.log(taskRow.data('id'));
+
+        $('#display-open-tasks').append(taskRow);
+
+
+
+
     }
-  // }
+
 
 }
+
+// render tasks to different tables
+
+// function renderOpenTasks(taskList) {
+//   for (const task of taskList) {
+//     if(task.completed_status == false) {
+//     } 
+//   }
+// }
+
+// function renderClosedTasks(taskList) {
+//   for (const task of taskList) {
+//     if(task.completed_status == true) {
+//     } 
+//   }
+// }
+
+
+
 
 
 // GET

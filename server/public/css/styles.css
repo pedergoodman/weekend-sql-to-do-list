@@ -29,14 +29,51 @@ main {
 
 
 
-
-
-/* Task element styling */
-
 .task-container h2 {
   margin: 10px 0 0 25px;
   text-align: left;
 }
+
+table {
+  width: 100%;
+}
+
+
+button img {
+  background-color: transparent;
+  height: 20px;
+  color: blue;
+}
+
+.task-delete-btn img {
+  filter: hue-rotate(180);
+}
+
+.task-row {
+  margin: 6px 0;
+  padding: 10px 0;
+}
+
+.task-checkbox-btn {
+  width: 30px;
+  padding: 0 5px;
+}
+.task-text {
+  padding: 0 5px;
+  text-align: left;
+
+}
+.task-date {
+  padding: 0 5px;
+  text-align: right;
+}
+.task-delete-btn {
+  width: 30px;
+  padding: 0 5px;
+}
+
+/* Task element styling  based on DIV
+
 
 .task-row {
   width: 100%;
@@ -61,7 +98,7 @@ main {
 .task-row-right {
   width: 30%;
 justify-content: right;
-}
+} */
 
 
 

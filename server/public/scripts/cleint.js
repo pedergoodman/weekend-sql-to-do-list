@@ -8,11 +8,16 @@ $(document).ready(() => {
 // TODO - Add buttons
 function addClickHandlers() {
   // TODO - Submit task (and due date)
+  $('#task-submit-btn')
 
   // TODO - delete task (delegation)
 
-  // TODO - Check/Uncheck complete button (delegation)
+  // TODO - Check/Uncheck open task (delegation)
 
+  // TODO - Button for closed task
+
+  
+  
   // TODO (optional) - Update Due Date (delegation)
 
 

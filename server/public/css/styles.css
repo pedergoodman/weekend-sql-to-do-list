@@ -40,14 +40,15 @@ table {
 
 
 button img {
-  background-color: transparent;
   height: 20px;
-  color: blue;
 }
 
-.task-delete-btn img {
-  filter: hue-rotate(180);
+
+.task-delete-btn button {
+  /* filter: hue-rotate(180); */
+  background-color: red;
 }
+
 
 .task-row {
   margin: 6px 0;

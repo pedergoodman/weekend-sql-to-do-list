@@ -126,22 +126,22 @@ function handleTaskSubmit() {
 // TODO - takes in task from submit, send to server POST
 function addTask(taskToAdd) {
   console.log("Submit button clicked.");
-  // TODO - AJAX POST
-  // $.ajax({
-  //   method: 'GET',
-  //   url: '/tasks'
-  // }).then((response) => {
-  //   let taskList = response
-  //   console.log('get response is:', response);
+  console.log(taskToAdd);
 
-  //   // send to render
-  //   renderTaskList;
+  $.ajax({
+    method: 'POST',
+    url: '/tasks',
+    data: taskToAdd
+  }).then((response) => {
+    console.log('post response is:', response);
 
-  // }).catch((err) => {
-  //   console.log('Error getting koala list', err);
-  //   alert('Error getting koalas list')
+    // send to render
+    getTasks()
 
-  // });
+  }).catch((err) => {
+    console.log('Error getting task list', err);
+    alert('Error getting task list')
+  });
 
 }
 

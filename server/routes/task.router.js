@@ -37,9 +37,9 @@ taskRouter.post('/', (req, res) => {
     INSERT INTO "task-list" 
     ("text", "due_date")
     VALUES
-    ($1, $2),
+    ($1, $2);
   `
-  const queryParams = [taskText, taskDueDate]
+  const queryParams = [taskText, taskDueDate];
 
 
   pool.query(queryText, queryParams)

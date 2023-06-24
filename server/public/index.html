@@ -9,8 +9,102 @@
   <title>SQL To-Do List</title>
 </head>
 <body>
-  <h1>SQL To-Do List</h1>
-  <div id="open-tasks" class="task-list">all uncompleted tasks</div>
-  <div id="completed-tasks" class="task-list">all completed tasks</div>
+  <header>
+    <h1>SQL To-Do List</h1>
+  </header>
+  <main>
+    <!-- submit inputs -->
+    <div id="submit-task-container">
+      <input type="text">
+      <input type="date" name="" id="">
+      <button type="button">Add Task</button>
+    </div>
+
+
+    <!-- New tasks go here -->
+    <div id="open-tasks-container" class="task-container">
+      <!-- Task list header -->
+      <div class="task-header">
+        <h2>To-dos</h2>
+      </div>
+      <!-- task list body -->
+      <div id="open-tasks" class="task-group-body">
+        <!-- Tasks appear here -->
+        
+        <!-- LAYOUT for task element for testing! -->
+        <div class="task-row">
+          
+          <div class="task-row-left">
+            <div class="task-checkbox">
+              <p>✅</p>
+            </div>
+            <div class="task-text-box">
+              <p>This is a to-do list item!</p>
+            </div>
+          </div>
+
+          <div class="task-row-right">
+            <div class="task-date-box">
+              <p>10-29-1993</p>
+            </div>
+            <div class="task-delete-btn">
+              <button>❌</button>
+            </div>
+          </div>
+
+        </div>
+        <!-- END individual task element -->
+      
+
+        </div>
+
+      </div>
+    </div>
+    
+    
+
+
+    <div id="closed-tasks-container" class="task-container">
+      <!-- Task list header -->
+      <div class="task-header">
+        <h2>Completed</h2>
+      </div>
+      <!-- task list body -->
+      <div id="closed-tasks" class="task-group-body">
+        <!-- Tasks appear here -->
+        
+        <!-- LAYOUT for task element for testing! -->
+        <div class="task-row">
+          
+          <div class="task-row-left">
+            <div class="task-checkbox">
+              <p>✅</p>
+            </div>
+            <div class="task-text-box">
+              <p>This is a to-do list item!</p>
+            </div>
+          </div>
+
+          <div class="task-row-right">
+            <div class="task-date-box">
+              <p>10-29-1993</p>
+            </div>
+            <div class="task-delete-btn">
+              <button>❌</button>
+            </div>
+          </div>
+
+        </div>
+        <!-- END individual task element -->
+      
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+  </main>
 </body>
 </html>

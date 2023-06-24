@@ -35,7 +35,7 @@ taskRouter.post('/', (req, res) => {
 
   const queryText = `
     INSERT INTO "task-list" 
-    ("text", "due-date")
+    ("text", "due_date")
     VALUES
     ($1, $2),
   `
@@ -82,8 +82,8 @@ taskRouter.put('/open-task/:id', (req, res) => {
 
   // TODO
   let queryText = `
-  UPDATE "task-list" SET "completed-status" = NOT "completed-status" WHERE "id"=$1;
-  UPDATE "task-list" SET "completed-date" = now() WHERE "id"=$1;
+  UPDATE "task-list" SET "completed_status" = NOT "completed_status" WHERE "id"=$1;
+  UPDATE "task-list" SET "completed_date" = now() WHERE "id"=$1;
   `;
 
   pool.query(queryText, [idToUpdate])
@@ -105,8 +105,8 @@ taskRouter.put('/closed-task/:id', (req, res) => {
 
   // TODO
   let queryText = `
-  UPDATE "task-list" SET "completed-status" = NOT "completed-status" WHERE "id"=$1;
-  UPDATE "task-list" SET "completed-date" = NULL WHERE "id"=$1;
+  UPDATE "task-list" SET "completed_status" = NOT "completed_status" WHERE "id"=$1;
+  UPDATE "task-list" SET "completed_date" = NULL WHERE "id"=$1;
   `;
 
   pool.query(query, [idToUpdate])

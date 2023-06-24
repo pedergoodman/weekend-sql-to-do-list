@@ -21,8 +21,10 @@ $(document).ready(() => {
 function renderTaskList(taskList) {
   console.log('in renderer! task list is:', taskList);
   // renderOpenTasks(taskList)
+  // console.log('in render open tasks');
   // renderClosedTasks(taskList)
-    console.log('in render open tasks');
+  $('#display-open-tasks').empty();
+
     for (const task of taskList) {
       let taskId = task.id;
       let taskText = task.text;
@@ -42,7 +44,6 @@ function renderTaskList(taskList) {
       }
 
 
-
       let taskRow = $(`
         <tr class="task-row" data-id="${taskId}">
           <td class="task-checkbox-btn ${setClass}"><button><img src="images/checkbox-5-64.png" alt="checkbox-5"></button></td>
@@ -52,13 +53,7 @@ function renderTaskList(taskList) {
         </tr>
         `);
 
-        console.log(taskRow.data('id'));
-
         $('#display-open-tasks').append(taskRow);
-
-
-
-
     }
 
 
@@ -93,8 +88,6 @@ function getTasks() {
     
     let taskList = response;
     console.log('task get response is:', response);
-
-
     // send to render
     renderTaskList(taskList);
 
@@ -158,10 +151,27 @@ function addTask(taskToAdd) {
 // DELETE
 // TODO - delete a task
 function deleteTask() {
-  console.log("Delete button clicked.");
+  console.log("Delete button clicked.", $(this));
   // TODO - grab item id
+  const taskId = $(this).closest("tr").data('id')
+  //dom traversal to 'tr'
+  console.log('taskId is', taskId);
 
   // TODO - AJAX DELETE
+  
+  $.ajax({
+    method: 'DELETE',
+    url: `/tasks/${taskId}`
+  }).then((response) => {
+    console.log('deleted task!');
+    // refresh tasks
+    getTasks();
+
+  }).catch((err) => {
+    console.log('Error deleting task', err);
+    alert('Error deleting task')
+
+  });
 }
 
 

@@ -107,7 +107,7 @@ taskRouter.put('/open-task/:id', (req, res) => {
   // TODO
   let queryText = `
   UPDATE "task-list" 
-  SET "completed_status" = NOT "completed_status", "completed_date" = NULL 
+  SET "completed_status" = NOT "completed_status", "completed_date" = NULL, "due_date" = NULL
   WHERE "id"=$1;
   `;
 
@@ -123,9 +123,7 @@ taskRouter.put('/open-task/:id', (req, res) => {
 
 });
 
-// (optional) PUT route to update 'Due date'
-  // clear
-  // add / change
+// PUT route to update 'Due date'
   taskRouter.put('/update-due/:id', (req, res) => {
     console.log('in taskRouter PUT');
     const idToUpdate = req.params.id;
@@ -153,6 +151,7 @@ taskRouter.put('/open-task/:id', (req, res) => {
   
   });
 
+  
 
 
 module.exports = taskRouter;

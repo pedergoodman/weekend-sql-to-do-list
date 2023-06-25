@@ -17,6 +17,7 @@ $(document).ready(() => {
 });
 
 
+let DateTime = luxon.DateTime;
 
 
 // RENDER 
@@ -26,64 +27,79 @@ function renderTaskList(taskList) {
   // console.log('in render open tasks');
   // renderClosedTasks(taskList)
   $('#display-open-tasks').empty();
+  $('#display-closed-tasks').empty();
+
 
     for (const task of taskList) {
-      let taskId = task.id;
-      let taskText = task.text;
+
       let taskStatus = task.completed_status;
-      let taskCompletedDate = task.completed_date
-      let taskDueDate = task.due_date
-
-      let dateToAdd = '';
-      let setClass = '';
-
-      // console.log(Date());
-
 
       if (taskStatus) {
-        dateToAdd = `✅ ${taskCompletedDate}`
-        setClass = 'closed'
-      } else if (taskDueDate) {
-        dateToAdd = `${taskDueDate}`
-        setClass = 'open'
+        renderClosedTasks(task)
       } else {
-        dateToAdd = `<input id="row-due-date" type="date">`
-        setClass = 'open'
-      };
-
-
-      let taskRow = $(`
-        <tr class="task-row" data-id="${taskId}">
-          <td class="task-checkbox-btn ${setClass}"><button><img src="images/checkbox-5-64.png" alt="checkbox-5"></button></td>
-          <td class="task-text">${taskText}</td>
-          <td class="task-date">${dateToAdd}</td>
-          <td class="task-delete-btn"><button><img src="images/delete-133-64.png" alt="checkbox-5"></button></td>
-        </tr>
-        `);
-
-        $('#display-open-tasks').append(taskRow);
+        renderOpenTasks(task)
+      }
+ 
     }
-
-
 }
 
 // render tasks to different tables
 
-// function renderOpenTasks(taskList) {
-//   for (const task of taskList) {
-//     if(task.completed_status == false) {
-//     } 
-//   }
-// }
+function renderOpenTasks(task) {
+  // console.log('open task is:', task);
 
-// function renderClosedTasks(taskList) {
-//   for (const task of taskList) {
-//     if(task.completed_status == true) {
-//     } 
-//   }
-// }
+  let taskId = task.id;
+  let taskText = task.text;
+  let taskDueDate = task.due_date;
+  let setClass = 'open';
 
+  if (taskDueDate) {
+    taskDueDate = formatDate(task.due_date);
+  } else {
+    taskDueDate = `<input id="row-due-date" type="date">`;
+  }
 
+  let taskRow = $(`
+    <tr class="task-row" data-id="${taskId}">
+      <td class="task-checkbox-btn ${setClass}"><button><img src="images/checkbox-5-64.png" alt="checkbox-5"></button></td>
+      <td class="task-text">${taskText}</td>
+      <td class="task-date">${taskDueDate}</td>
+      <td class="task-delete-btn"><button><img src="images/delete-133-64.png" alt="checkbox-5"></button></td>
+    </tr>
+  `);
+
+  $('#display-open-tasks').append(taskRow);
+
+}
+
+function renderClosedTasks(task) {
+  // console.log('closed task is:', task);
+  let taskId = task.id;
+  let taskText = task.text;
+  let taskCompletedDate = formatDate(task.completed_date);
+  let setClass = 'closed';
+
+  let taskRow = $(`
+    <tr class="task-row" data-id="${taskId}">
+      <td class="task-checkbox-btn ${setClass}"><button><img src="images/checkbox-5-64.png" alt="checkbox-5"></button></td>
+      <td class="task-text">${taskText}</td>
+      <td class="task-date">${taskCompletedDate}</td>
+      <td class="task-delete-btn"><button><img src="images/delete-133-64.png" alt="checkbox-5"></button></td>
+    </tr>
+  `);
+
+  $('#display-closed-tasks').append(taskRow); 
+  
+}
+
+function formatDate(date) {
+  let year = date.slice(0, 4)
+  let month = date.slice(5,7)
+  let day = date.slice(8,10)
+
+  return `${month}/${day}/${year}`
+
+}
 
 
 

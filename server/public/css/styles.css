@@ -2,7 +2,6 @@
   display: inline-block;
 
   width: 475px;
-  background-color: chartreuse;
   margin-right: auto;
 }
 
@@ -40,7 +39,7 @@ table {
 
 
 .task-row button {
-  
+
 }
 
 button img {

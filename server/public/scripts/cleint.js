@@ -12,6 +12,8 @@ $(document).ready(() => {
   $('.task-group-body').on('click', '.open', setStatusComplete)
   $('.task-group-body').on('click', '.closed', setStatusOpen)
 
+  $('#display-open-tasks').on('change', '#row-due-date', setDueDate)
+
 });
 
 
@@ -35,13 +37,19 @@ function renderTaskList(taskList) {
       let dateToAdd = '';
       let setClass = '';
 
+      // console.log(Date());
+
+
       if (taskStatus) {
         dateToAdd = `✅ ${taskCompletedDate}`
         setClass = 'closed'
-      } else {
-        dateToAdd = `Due: ${taskDueDate}`
+      } else if (taskDueDate) {
+        dateToAdd = `${taskDueDate}`
         setClass = 'open'
-      }
+      } else {
+        dateToAdd = `<input id="row-due-date" type="date">`
+        setClass = 'open'
+      };
 
 
       let taskRow = $(`
@@ -177,7 +185,7 @@ function deleteTask() {
 
 
 // PUT(S)
-// TODO - handles updating complete status
+// Handles updating complete status
 function setStatusComplete() {
   console.log("Check button clicked.");
   const taskId = $(this).closest("tr").data('id')
@@ -213,5 +221,29 @@ function setStatusOpen() {
   }).catch((error) => {
     console.log('Error in UPDATE request: ', error);
     alert('Error in updating task')
+  })
+}
+
+function setDueDate() {
+  console.log('in change due date');
+  const taskId = $(this).closest("tr").data('id')
+  let newDueDate = $(this).val();
+
+  console.log('taskId is', taskId);
+  console.log('grabbed value is', newDueDate);
+
+  $.ajax({
+    method: "PUT",
+    url: `/tasks/update-due/${taskId}`,
+    data: { updateDueDate: newDueDate }
+
+  }).then((response) => {
+
+    console.log('Task due date updated!')
+    getTasks();
+
+  }).catch((error) => {
+    console.log('Error in UPDATE due date request: ', error);
+    alert('Error in updating task due date')
   })
 }

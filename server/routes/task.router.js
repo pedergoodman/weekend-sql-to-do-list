@@ -126,6 +126,33 @@ taskRouter.put('/open-task/:id', (req, res) => {
 // (optional) PUT route to update 'Due date'
   // clear
   // add / change
+  taskRouter.put('/update-due/:id', (req, res) => {
+    console.log('in taskRouter PUT');
+    const idToUpdate = req.params.id;
+    let newDueDate = req.body.updateDueDate;
+    // newDueDate = moment().format(newDueDate);
+
+    console.log('id is:', idToUpdate);
+    console.log('newDueDate is:', newDueDate);
+    // TODO
+    let queryText = `
+    UPDATE "task-list" 
+    SET "due_date" = '${newDueDate}'
+    WHERE "id"=$1;
+    `;
+  
+    pool.query(queryText, [idToUpdate])
+    .then((result) => {
+        console.log('Task set to open!');
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        console.log('Error making task update request: ', error);
+        res.sendStatus(500);
+    })
+  
+  });
+
 
 
 module.exports = taskRouter;

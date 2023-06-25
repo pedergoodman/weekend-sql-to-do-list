@@ -76,19 +76,20 @@ taskRouter.delete('/:id', (req, res) => {
 // PUT route to toggle completed status
 // PUT route to toggle completed date (same route?)
   // how do we clear the date if 'unchecking' a task?
-taskRouter.put('/open-task/:id', (req, res) => {
+taskRouter.put('/close-task/:id', (req, res) => {
   console.log('in taskRouter PUT');
   const idToUpdate = req.params.id;
 
   // TODO
   let queryText = `
-  UPDATE "task-list" SET "completed_status" = NOT "completed_status" WHERE "id"=$1;
-  UPDATE "task-list" SET "completed_date" = now() WHERE "id"=$1;
+  UPDATE "task-list"
+  SET "completed_status" = NOT "completed_status", "completed_date" = now()
+  WHERE "id"=$1;
   `;
 
   pool.query(queryText, [idToUpdate])
   .then((result) => {
-      console.log('Task updated!');
+      console.log('Task set to closed!');
       res.sendStatus(200);
   })
   .catch((error) => {
@@ -99,19 +100,20 @@ taskRouter.put('/open-task/:id', (req, res) => {
 });
 
 
-taskRouter.put('/closed-task/:id', (req, res) => {
+taskRouter.put('/open-task/:id', (req, res) => {
   console.log('in taskRouter PUT');
   const idToUpdate = req.params.id;
 
   // TODO
   let queryText = `
-  UPDATE "task-list" SET "completed_status" = NOT "completed_status" WHERE "id"=$1;
-  UPDATE "task-list" SET "completed_date" = NULL WHERE "id"=$1;
+  UPDATE "task-list" 
+  SET "completed_status" = NOT "completed_status", "completed_date" = NULL 
+  WHERE "id"=$1;
   `;
 
-  pool.query(query, [idToUpdate])
+  pool.query(queryText, [idToUpdate])
   .then((result) => {
-      console.log('Task updated!');
+      console.log('Task set to open!');
       res.sendStatus(200);
   })
   .catch((error) => {

@@ -9,8 +9,8 @@ $(document).ready(() => {
   $('.task-group-body').on('click', '.task-delete-btn', deleteTask)
 
   // TODO - Check/Uncheck open task (delegation)
-  $('.task-group-body').on('click', '.open', updateCompleteStatus)
-  $('.task-group-body').on('click', '.closed', updateCompleteStatus)
+  $('.task-group-body').on('click', '.open', setStatusComplete)
+  $('.task-group-body').on('click', '.closed', setStatusOpen)
 
 });
 
@@ -178,9 +178,40 @@ function deleteTask() {
 
 // PUT(S)
 // TODO - handles updating complete status
-function updateCompleteStatus() {
-  console.log("Complete button clicked.");
-  
+function setStatusComplete() {
+  console.log("Check button clicked.");
+  const taskId = $(this).closest("tr").data('id')
+
   // TODO - AJAX PUT
+  $.ajax({
+    method: "PUT",
+    url: `/tasks/close-task/${taskId}`
+  }).then((response) => {
+
+    console.log('Task completion status updated!')
+    getTasks();
+
+  }).catch((error) => {
+    console.log('Error in UPDATE request: ', error);
+    alert('Error in updating task')
+  })
   
 };
+
+function setStatusOpen() {
+  console.log('in set status open');
+  const taskId = $(this).closest("tr").data('id')
+
+  $.ajax({
+    method: "PUT",
+    url: `/tasks/open-task/${taskId}`
+  }).then((response) => {
+
+    console.log('Task completion status updated!')
+    getTasks();
+
+  }).catch((error) => {
+    console.log('Error in UPDATE request: ', error);
+    alert('Error in updating task')
+  })
+}

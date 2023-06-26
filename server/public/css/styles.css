@@ -26,6 +26,15 @@ main {
   margin: 30px;
 }
 
+.task-text-header {
+  text-align: left;
+  padding-left: 16px;
+}
+
+.task-date-header {
+  text-align: right;
+  padding-right: 16px;
+}
 
 
 .task-container h2 {
@@ -38,18 +47,13 @@ table {
 }
 
 
-.task-row button {
-
-}
-
 button img {
   height: 20px;
 }
 
 
-.task-delete-btn button {
-  /* filter: hue-rotate(180); */
-  background-color: red;
+.task-delete-btn button img:hover {
+  background-image: url('/server/public/images/delete-red-hover.png');
 }
 
 
@@ -120,9 +124,8 @@ justify-content: right;
 }
 
 
-.task-date-box  {
-
-
+.closed .task-text {
+  text-decoration: line-through;
 }
 
 .task-delete-btn {

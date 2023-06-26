@@ -60,8 +60,8 @@ function renderOpenTasks(task) {
   }
 
   let taskRow = $(`
-    <tr class="task-row" data-id="${taskId}">
-      <td class="task-checkbox-btn ${setClass}"><button><img src="images/checkbox-5-64.png" alt="checkbox-5"></button></td>
+    <tr class="task-row ${setClass}" data-id="${taskId}">
+      <td class="task-checkbox-btn"><button><img src="images/checkbox-5-64.png" alt="checkbox-5"></button></td>
       <td class="task-text">${taskText}</td>
       <td class="task-date">${taskDueDate}</td>
       <td class="task-delete-btn"><button><img src="images/delete-133-64.png" alt="checkbox-5"></button></td>
@@ -80,9 +80,9 @@ function renderClosedTasks(task) {
   let setClass = 'closed';
 
   let taskRow = $(`
-    <tr class="task-row" data-id="${taskId}">
-      <td class="task-checkbox-btn ${setClass}"><button><img src="images/checkbox-5-64.png" alt="checkbox-5"></button></td>
-      <td class="task-text">${taskText}</td>
+    <tr class="task-row ${setClass}" data-id="${taskId}">
+      <td class="task-checkbox-btn"><button><img src="images/checkbox-5-64.png" alt="checkbox-5"></button></td>
+      <td class="task-text ">${taskText}</td>
       <td class="task-date">${taskCompletedDate}</td>
       <td class="task-delete-btn"><button><img src="images/delete-133-64.png" alt="checkbox-5"></button></td>
     </tr>

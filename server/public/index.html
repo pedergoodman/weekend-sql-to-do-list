@@ -18,9 +18,9 @@
     <h1>SQL To-Do List</h1>
   </header>
   <main>
-    <h2>Add to List</h2>
     <!-- submit inputs -->
     <div id="submit-task-container" class="container-fluid">
+      <h2>Add to List</h2>
       <input id="taskText" type="text" placeholder="Add To-Do....">
       <input id="taskDueDate" type="date">
       <button id="task-submit-btn" type="button">Add Task</button>
@@ -38,7 +38,12 @@
 
         <table>
           <thead>
-
+            <tr class="task-row-header">
+              <th></th>
+              <th class="task-text-header">Tasks</th>
+              <th class="task-date-header">Date Due</th>
+              <th class="task-delete-btn"></th>
+            </tr>
           </thead>
           <tbody id="display-open-tasks"  class="table-striped">
             <!-- This is where tasks load -->
@@ -59,7 +64,12 @@
 
         <table>
           <thead>
-
+            <tr class="task-row-header">
+              <th></th>
+              <th class="task-text-header">Tasks</th>
+              <th class="task-date-header">Date Completed</th>
+              <th class="task-delete-btn"></th>
+            </tr>
           </thead>
           <tbody id="display-closed-tasks"  class="table-striped">
             <!-- This is where tasks load -->

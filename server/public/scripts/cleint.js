@@ -17,6 +17,9 @@ $(document).ready(() => {
 });
 
 
+
+
+
 // RENDER 
 function renderTaskList(taskList) {
   console.log('in renderer! task list is:', taskList);
@@ -49,8 +52,9 @@ function renderOpenTasks(task) {
   let taskDueDate = task.due_date;
   let setClass = 'open';
 
+
   if (taskDueDate) {
-    taskDueDate = formatDate(task.due_date);
+    taskDueDate = new Date(task.due_date).toLocaleDateString();
   } else {
     taskDueDate = `<input id="row-due-date" type="date">`;
   }
@@ -72,8 +76,9 @@ function renderClosedTasks(task) {
   // console.log('closed task is:', task);
   let taskId = task.id;
   let taskText = task.text;
-  let taskCompletedDate = formatDate(task.completed_date);
+  let taskCompletedDate = new Date(task.completed_date).toLocaleDateString();
   let setClass = 'closed';
+
 
   let taskRow = $(`
     <tr class="task-row ${setClass}" data-id="${taskId}">
@@ -86,16 +91,7 @@ function renderClosedTasks(task) {
 
   $('#display-closed-tasks').append(taskRow); 
   
-}
 
-function formatDate(date) {
-  let year = date.slice(0, 4)
-  let month = date.slice(5,7)
-  let day = date.slice(8,10)
-
-  return `${month}/${day}/${year}`
-
-}
 
 
 

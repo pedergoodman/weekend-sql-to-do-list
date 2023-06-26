@@ -28,10 +28,9 @@ function renderTaskList(taskList) {
   // renderClosedTasks(taskList)
   $('#display-open-tasks').empty();
   $('#display-closed-tasks').empty();
-
+  
 
     for (const task of taskList) {
-
       let taskStatus = task.completed_status;
 
       if (taskStatus) {
@@ -90,7 +89,7 @@ function renderClosedTasks(task) {
   `);
 
   $('#display-closed-tasks').append(taskRow); 
-  
+}  
 
 
 
@@ -126,13 +125,23 @@ function handleTaskSubmit() {
   let taskText = $('#taskText').val();
   let taskDueDate = $('#taskDueDate').val();
 
+
+  if (taskDueDate == '') {
+    taskDueDate = null;
+  }
+
+
   let task = {
     text: taskText,
     dueDate: taskDueDate
   };
 
+  if (!taskText) {
+    alert('Please add a task!')
+  } else {
+    addTask(task)
+  } 
 
-  addTask(task)
 
   console.log('task to post is:', task);
 
@@ -188,7 +197,7 @@ function deleteTask() {
     alert('Error deleting task')
 
   });
-}
+};
 
 
 
@@ -230,7 +239,7 @@ function setStatusOpen() {
     console.log('Error in UPDATE request: ', error);
     alert('Error in updating task')
   })
-}
+}; 
 
 function setDueDate() {
   console.log('in change due date');
@@ -254,4 +263,4 @@ function setDueDate() {
     console.log('Error in UPDATE due date request: ', error);
     alert('Error in updating task due date')
   })
-}
+};

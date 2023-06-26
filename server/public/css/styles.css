@@ -52,9 +52,7 @@ button img {
 }
 
 
-.task-delete-btn button img:hover {
-  background-image: url('/server/public/images/delete-red-hover.png');
-}
+
 
 
 .task-row {
@@ -80,7 +78,14 @@ button img {
   padding: 0 5px;
 }
 
+.task-container h2 {
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+
+
 /* Task element styling  based on DIV
+
 
 
 .task-row {

@@ -62,7 +62,8 @@ button img {
 
 .task-checkbox-btn {
   width: 30px;
-  padding: 0 5px;
+  height: 30px;
+  padding: 0;
 }
 .task-text {
   padding: 0 5px;
@@ -75,7 +76,8 @@ button img {
 }
 .task-delete-btn {
   width: 30px;
-  padding: 0 5px;
+  height: 30px;
+  padding: 0;
 }
 
 .task-container h2 {
@@ -83,39 +85,6 @@ button img {
   margin-bottom: 10px;
 }
 
-
-/* Task element styling  based on DIV
-
-
-
-.task-row {
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  box-sizing: border-box;
-  border: 0.5px solid black;
-  height: 36px;
-  justify-content: space-between;
-}
-
-.task-row-right, .task-row-left {
-  display: inline-flex;
-  align-items: center;
-  height: 100%;
-}
-
-.task-row-left {
-  width: 70%;
-}
-
-.task-row-right {
-  width: 30%;
-justify-content: right;
-} */
-
-
-
-/* checkbox styling! */
 
 .task-checkbox {
   width: auto;

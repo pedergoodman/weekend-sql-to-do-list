@@ -9,15 +9,12 @@ $(document).ready(() => {
   $('.task-group-body').on('click', '.task-delete-btn', deleteTask)
 
   // TODO - Check/Uncheck open task (delegation)
-  $('.task-group-body').on('click', '.open', setStatusComplete)
-  $('.task-group-body').on('click', '.closed', setStatusOpen)
+  $('.task-group-body').on('click', '.open .task-checkbox-btn', setStatusComplete)
+  $('.task-group-body').on('click', '.closed .task-checkbox-btn', setStatusOpen)
 
   $('#display-open-tasks').on('change', '#row-due-date', setDueDate)
 
 });
-
-
-let DateTime = luxon.DateTime;
 
 
 // RENDER 
@@ -44,7 +41,6 @@ function renderTaskList(taskList) {
 }
 
 // render tasks to different tables
-
 function renderOpenTasks(task) {
   // console.log('open task is:', task);
 
@@ -61,7 +57,7 @@ function renderOpenTasks(task) {
 
   let taskRow = $(`
     <tr class="task-row ${setClass}" data-id="${taskId}">
-      <td class="task-checkbox-btn"><button><img src="images/completed-task-static.png" alt="checkbox-5"></button></td>
+      <td><button class="task-checkbox-btn"><img src="images/completed-task-static.png" alt="checkbox-5"></button></td>
       <td class="task-text">${taskText}</td>
       <td class="task-date">${taskDueDate}</td>
       <td class="task-delete-btn"><button><img src="images/delete-red-static.png" alt="checkbox-5"></button></td>
@@ -81,7 +77,7 @@ function renderClosedTasks(task) {
 
   let taskRow = $(`
     <tr class="task-row ${setClass}" data-id="${taskId}">
-      <td class="task-checkbox-btn"><button><img src="images/new-task-static.png" alt="checkbox-5"></button></td>
+      <td><button class="task-checkbox-btn"><img src="images/new-task-static.png" alt="checkbox-5"></button></td>
       <td class="task-text ">${taskText}</td>
       <td class="task-date">${taskCompletedDate}</td>
       <td class="task-delete-btn"><button><img src="images/delete-red-static.png" alt="checkbox-5"></button></td>

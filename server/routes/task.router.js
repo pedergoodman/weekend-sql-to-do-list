@@ -27,11 +27,13 @@ taskRouter.get('/', (req, res) => {
 
 // POST route to add task to server
 taskRouter.post('/', (req, res) => {
-  console.log('in taskRouter POST');
+  console.log('in taskRouter POST', req.body);
 
 // TODO - grab data from server
   let taskText = req.body.text;
   let taskDueDate = req.body.dueDate;
+
+  console.log('taskDueDate is:', taskDueDate);
 
   const queryText = `
     INSERT INTO "task-list" 

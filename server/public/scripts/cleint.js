@@ -126,21 +126,22 @@ function handleTaskSubmit() {
   let taskDueDate = $('#taskDueDate').val();
 
 
-  if (taskDueDate == '') {
-    taskDueDate = null;
-  }
-
 
   let task = {
     text: taskText,
     dueDate: taskDueDate
   };
 
-  if (!taskText) {
+
+
+
+  if (taskText == '') {
     alert('Please add a task!')
+  } else if (taskDueDate == '') {
+    alert('Please add a Due date!')
   } else {
     addTask(task)
-  } 
+  }
 
 
   console.log('task to post is:', task);
@@ -159,10 +160,8 @@ function addTask(taskToAdd) {
     data: taskToAdd
   }).then((response) => {
     console.log('post response is:', response);
-
     // send to render
     getTasks()
-
   }).catch((err) => {
     console.log('Error getting task list', err);
     alert('Error getting task list')

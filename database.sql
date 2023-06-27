@@ -4,7 +4,7 @@ CREATE TABLE "task-list" (
   "completed_status" BOOLEAN DEFAULT FALSE,
   "completed_date" DATE,
   "created_date" TIMESTAMPTZ DEFAULT NOW(),
-  "due_date" DATE SET DEFAULT NULL
+  "due_date" DATE DEFAULT NULL
 );
 
 
